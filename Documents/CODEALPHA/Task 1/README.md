@@ -1,4 +1,4 @@
- <!-- This is a simple age calculator web application -- >
+ <!-- This is a simple age calculator and a to-do list web application -- >
 
 To run:
 
