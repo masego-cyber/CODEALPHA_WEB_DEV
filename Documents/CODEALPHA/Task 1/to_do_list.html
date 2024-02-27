@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List App</title>
+    <style>
+        /* Basic styling for the To-Do List */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+
+        /* Additional styling for the To-Do List */
+        #todoList {
+            text-align: left;
+            max-width: 400px;
+            margin: 20px auto;
+        }
+
+        /* Input field styling */
+        input[type="text"] {
+            width: 70%;
+            padding: 8px;
+            margin: 5px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        /* Button styling */
+        button {
+            padding: 8px;
+        }
+
+        /* Styling for the task list */
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        /* Styling for individual tasks */
+        li {
+            margin-bottom: 8px;
+        }
+
+        /* Styling for the task item and delete button */
+        .task {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Styling for the delete button */
+        .delete-btn {
+            background-color: #ff5757;
+            color: #fff;
+            border: none;
+            padding: 6px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- To-Do List Section -->
+    <div id="todoList">
+        <h2>To-Do List</h2>
+
+        <!-- Input field for new tasks -->
+        <input type="text" id="taskInput" placeholder="New task...">
+
+        <!-- Button to add a new task -->
+        <button onclick="addTask()">Add</button>
+
+        <!-- Task list -->
+        <ul id="tasks"></ul>
+    </div>
+
+    <!-- JavaScript for the To-Do List functionality -->
+    <script>
+        function addTask() {
+            const taskInput = document.getElementById('taskInput');
+            const taskText = taskInput.value.trim();
+
+            if (taskText === '') {
+                alert('Please enter a task.');
+                return;
+            }
+
+            const tasksList = document.getElementById('tasks');
+
+            const li = document.createElement('li');
+            li.className = 'task';
+
+            const span = document.createElement('span');
+            span.textContent = taskText;
+
+            const deleteBtn = document.createElement('button');
+            deleteBtn.className = 'delete-btn';
+            deleteBtn.textContent = 'Delete';
+            deleteBtn.onclick = function() {
+                li.remove();
+            };
+
+            li.appendChild(span);
+            li.appendChild(deleteBtn);
+            tasksList.appendChild(li);
+
+            taskInput.value = '';
+        }
+    </script>
+
+</body>
+</html>
